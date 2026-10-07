@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portafolio 4 Johnston</title>
+    </head>
+    <body>
+        <script>
+             //Ejercicio 1
+             class Articulo{
+                #_nombre;
+                #_PrecioBase;
+                constructor(nom,pb){
+                    if(!isNaN(parseFloat(pb))){
+                        this.#_PrecioBase=parseFloat(pb);
+                        this.#_nombre=nom.toString();
+                    }
+                }
+                get nom(){
+                    return this.#_nombre;
+                }
+                set nom(value){
+                    this.#_nombre=value.toString();
+                }
+                get PrecioB(){
+                    return this.#_PrecioBase;
+                }
+                set PrecioB(value){
+                    if(!isNaN(parseFloat(value))){
+                        this.#_PrecioBase=parseFloat(value);
+                    }
+                }
+                get precioMenudeo(){
+                    return (this.#_PrecioBase+this.#_PrecioBase*0.3);
+                }  
+                get precioMayoreo(){
+                    return (this.#_PrecioBase+this.#_PrecioBase*0.15);
+                } 
+            }
+
+            let p=new Articulo("jabon", 45);
+            console.log(p);
+            console.log(p.nom);
+            console.log(p.PrecioB);
+            console.log(p.precioMenudeo);
+            console.log(p.precioMayoreo);
+
+        </script>
+        <script>
+            //Ejercicio 2
+            class Alumno{
+                #_NumerodeCuenta;
+                #_Nombre;
+                #_Calificaciones=new Array(3);
+
+                constructor(numC,nom,c1,c2,c3){
+                    if(!isNaN(parseInt(numC))){
+                        this.#_NumerodeCuenta=parseInt(numC);
+                        this.#_Nombre=nom.toString();
+                    }
+                    if(!isNaN(parseFloat(c1))){
+                        if(parseFloat(c1)>=0 && parseFloat(c1)<=10){
+                            this.#_Calificaciones[0]=parseFloat(c1);
+                        }
+                        else{
+                            this.#_Calificaciones[0]=0;
+                        }
+                    }
+                    else{
+                        this.#_Calificaciones[0]=0;
+                    }
+                    if(!isNaN(parseFloat(c2))){
+                        if(parseFloat(c2)>=0 && parseFloat(c2)<=10){
+                            this.#_Calificaciones[1]=parseFloat(c2);
+                        }
+                    }
+                    if(!isNaN(parseFloat(c3))){
+                        if(parseFloat(c3)>=0 && parseFloat(c2)<=10){
+                            this.#_Calificaciones[2]=parseFloat(c3);
+                        }
+                    }
+                }
+                get numCuenta(){
+                    return this.#_NumerodeCuenta;
+                }
+                set numCuenta(value){
+                    if(!isNaN(parseInt(value)))
+                    this.#_NumerodeCuenta=parseInt(value);
+                }
+                get nombre(){
+                    return this.#_Nombre;
+                }
+                set nombre(value){
+                    this.#_Nombre=value.toString();
+                }
+                get cal1(){
+                    return this.#_Calificaciones[0];
+                }
+                set cal1(value){
+                    if(!isNaN(parseFloat(value))){
+                        if(parseFloat(value)>=0 && parseFloat(value)<=10){
+                            this.#_Calificaciones[0]=parseFloat(value);
+                        }
+                        else{
+                            this.#_Calificaciones[0]=0;
+                        }
+                    }
+                    else{
+                        this.#_Calificaciones[0]=0;
+                    }
+                }
+                get cal2(){
+                    return this.#_Calificaciones[1];
+                }
+                set cal2(value){
+                    if(!isNaN(parseFloat(value))){
+                        if(parseFloat(value)>=0 && parseFloat(value)<=10){
+                            this.#_Calificaciones[1]=parseFloat(value);
+                        }
+                    }    
+                }
+                get cal3(){
+                    return this.#_Calificaciones[2];
+                }
+                set cal3(value){
+                    if(!isNaN(parseFloat(value))){
+                        if(parseFloat(value)>=0 && parseFloat(value)<=10){
+                            this.#_Calificaciones[2]=parseFloat(value);
+                        }
+                    }        
+                }
+                get promedio(){
+                    return (this.#_Calificaciones[0]+this.#_Calificaciones[1]+this.#_Calificaciones[2])/3;
+                }
+                estatus = function(){
+                    if(this.promedio>=6){
+                        return "Aprobado";
+                    }
+                    else{
+                        return "Reprobado";
+                    }
+                }
+            }
+            let a=new Alumno("20174917",{nom:"Karol"},10,10,9.8);
+            console.log(a);
+            console.log(a.numCuenta);
+            console.log(a.promedio);
+        </script>
+        <script>
+            //Ejercicio 3
+            class Rectangulo{
+                #_Base;
+                #_Altura;
+
+                constructor(b,a){
+                    if((!isNaN(parseFloat(b)))&&(!isNaN(parseFloat(a)))){
+                        this.#_Base=parseFloat(b);
+                        this.#_Altura=parseFloat(a);
+                    }
+
+                }
+                get bas(){
+                    return this.#_Base;
+                }
+                set bas(value){
+                    if(!isNaN(parseFloat(value))){
+                        this.#_Base=parseFloat(value);
+                    }
+                }
+                get alt(){
+                    return this.#_Altura;
+                }
+                set alt(value){
+                    if(!isNaN(parseFloat(value))){
+                        this.#_Base=parseFloat(value);
+                    }
+                }
+                per=function(){
+                    return((this.#_Base*2)+(this.#_Altura*2));
+                }
+                ar=function(){
+                    return(this.#_Base*this.#_Altura);
+                }
+            }
+            let r=new Rectangulo(10, 5);
+            console.log(r);
+            console.log(r.bas);
+            console.log(r.alt);
+            console.log(r.per());
+            console.log(r.ar());
+
+        </script>
+        <script>
+            //Ejercicio 4
+            class Fecha{
+                #_dia;
+                #_mes;
+                #_anio;
+                constructor(dia,mes,anio){
+                    if(!isNaN(parseInt(dia)))
+                        if(parseInt(dia)>=1 && parseInt(dia)<=31)
+                            this.#_dia=parseInt(dia);
+                    if(!isNaN(parseInt(mes)))
+                        if(parseInt(mes)>=1 && parseInt(mes)<=12)
+                            this.#_mes=parseInt(mes);
+                    if(!isNaN(parseInt(anio)))
+                        if(parseInt(anio)>=1 && parseInt(anio)<=9999)
+                            this.#_anio=parseInt(anio);
+                }
+                get dia(){
+                    return this.#_dia;
+                }
+                set dia(value){
+                    if(!isNaN(parseInt(value)))
+                        if(parseInt(value)>=1 && parseInt(value)<=31)
+                            this.#_dia=parseInt(value);
+                }
+                get mes(){
+                    return this.#_mes;
+                }
+                set mes(value){
+                    if(!isNaN(parseInt(value)))
+                        if(parseInt(value)>=1 && parseInt(value)<=12)
+                            this.#_mes=parseInt(value);
+                }
+                get anio(){
+                    return this.#_anio;
+                }
+                set anio(value){
+                    if(!isNaN(parseInt(value)))
+                        if(parseInt(value)>=1 && parseInt(value)<=9999)
+                            this.#_anio=parseInt(value);
+                }       
+            }
+            class Persona{
+                #_nom;
+                #_fNac;
+                constructor(nom,fechNac){
+                    this.#_nom=nom.toString();
+                    this.#_fNac=fechNac;
+                }
+                get nombre(){
+                    return this.#_nom;
+                }
+                set nombre(value){
+                    this.#_nom=value.toString();
+                }
+                get fechaNacimiento(){
+                    return this.#_fNac;
+                }
+                set fechaNacimiento(value){
+                    this.#_fNac=value;
+                }
+                edad=function(fecha){
+                    let e=fecha.anio-this.fechaNacimiento.anio;
+                    if(fecha.mes<this.fechaNacimiento.mes)
+                    e--;
+                    else
+                        if(fecha.mes==this.fechaNacimiento.mes && fecha.dia<this.fechaNacimiento.dia)
+                        e--;
+                        return e;
+                }
+            }
+            
+            let pe=new Persona("Karol",new Fecha(18,12,2001));
+            console.log(pe);
+            console.log(pe.edad(new Fecha(27,4,2024)));
+        </script>
+
+    </body>
+</html>

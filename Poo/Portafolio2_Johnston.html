@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <script src="portafolio.js"></script>
+    </head>
+    <body>
+        <h1>1) Numero mayor de dos</h1>
+
+        <label >Primer numero <input type="number" id="1num1"></label>
+        <label >Segundo numero <input type="number" id="1num2"></label>
+        <button onclick="nummayor()">Aceptar</button>
+        <label >Numero mayor <input type="number" id="1mayor" readonly></label>
+       
+
+        <script>
+            function nummayor(){
+                let num1=parseFloat(document.getElementById("1num1").value);
+                let num2=parseFloat(document.getElementById("1num2").value);
+                if(num1>num2){
+                    document.getElementById("1mayor").value=num1;
+                }
+                else{
+                    document.getElementById("1mayor").value=num2;
+                }
+            }
+        </script>
+        <hr>
+
+        <h1>2) Numeros ordenados de manera ascendente</h1>
+        <label >Primer numero <input type="number" id="2num1"></label>
+        <label >Segundo numero <input type="number" id="2num2"></label>
+        <label >Tercer numero <input type="number" id="2num3"></label>
+        <button onclick="ascendente()">Aceptar</button>
+        <div id="2orden"></div>
+
+        <script>
+            function ascendente(){
+                let num1=parseFloat(document.getElementById("2num1").value);
+                let num2=parseFloat(document.getElementById("2num2").value);
+                let num3=parseFloat(document.getElementById("2num3").value);
+                let a="";
+
+                if((num1<num2)&&(num1<num3)){
+                    if(num2<num3){
+                        a=num1+" "+num2+" "+num3; document.getElementById("2orden").innerText=a;
+                    }
+                    else{
+                        a=num1+" "+num3+" "+num2; document.getElementById("2orden").innerText=a;
+                    }
+                }
+                else if((num2<num1)&&(num2<num3)){
+                    if(num3<num1){
+                        a=num2+" "+num3+" "+num1; document.getElementById("2orden").innerText=a;
+                    }
+                    else{
+                        a=num2+" "+num1+" "+num3; document.getElementById("2orden").innerText=a;
+                    }
+                }
+                else{
+                    if(num2<num1){
+                        a=num3+" "+num2+" "+num1; document.getElementById("2orden").innerText=a;
+                    }
+                    else{
+                        a=num3+" "+num1+" "+num2; document.getElementById("2orden").innerText=a;
+                    }
+                }
+            }
+        </script>
+        <hr>
+
+        <h1>3) Multiplo de 5</h1>
+        <label >Numero <input type="number" id="3num"></label>
+        <button onclick="multiplo()">Aceptar</button> 
+        <h3 id="3respuesta"></h3>
+
+        <script>
+           function multiplo(){
+            let num=parseFloat(document.getElementById("3num").value);
+                if(num%5==0)
+                {
+                    document.getElementById("3respuesta").innerText="El numero es multiplo de 5";
+                }
+                else{
+                    document.getElementById("3respuesta").innerText="El numero no es multiplo de 5";
+                }
+           }
+        </script>
+        <hr>
+
+        <h1>4) Par o impar</h1>
+        <label >Numero 1 <input type="number" id="4paroimpar"></label>
+        <label >Numero 2 <input type="number" id="4paroimpar2"></label>
+        <button onclick="parimpar()">Aceptar</button>
+        <h3 id="4poi"></h3>
+        
+        <script>
+            function parimpar(){
+                let num1=parseFloat(document.getElementById("4paroimpar").value);
+                let num2=parseFloat(document.getElementById("4paroimpar2").value);
+                if(num1%2==0)
+                {
+                    if(num2%2==0){
+                        document.getElementById("4poi").innerText="Los numeros "+num1+" y "+num2+" son pares";
+                    }
+                    else{
+                        document.getElementById("4poi").innerText="El numero "+num1+" es par, "+" el numero "+num2+" es impar";
+                    }
+                    
+                }
+                else{
+                    if(num2%2==0){
+                        document.getElementById("4poi").innerText="El numero "+num2+" es par, "+" el numero "+num1+" es impar";
+                    }
+                    else{
+                        document.getElementById("4poi").innerText="Los numeros "+num1+" y "+num2+" son impares";
+                    }
+                    
+                }
+            }
+        </script>
+        <hr>
+
+        <h1>5) Hora</h1>
+        <label >Horas <input type="number" id="5hora"></label>
+        <label >Minutos <input type="number" id="5minutos"></label>
+        <label >Segundos <input type="number" id="5segundos"></label>
+        <button onclick="tiempo()">Aceptar</button>
+        <div id="5tiempo"></div>
+
+        <script>
+            function tiempo(){
+                let h=parseFloat(document.getElementById("5hora").value);
+                let m=parseFloat(document.getElementById("5minutos").value);
+                let s=parseFloat(document.getElementById("5segundos").value);
+                let t="";
+
+                if((s>59)||(s<0)||(m<0)||(m>59)||(h<0)||(h>23)){
+                    document.getElementById("5tiempo").innerText="La hora introducida no es valida";
+                }
+                else{
+                    if(s<59){
+                    s=s+1;
+                    t=h+":"+m+":"+s; document.getElementById("5tiempo").innerText=t;
+                    }
+                    else{
+                        s=0;
+                        if(m<59){
+                            m=m+1;
+                            t=h+":"+m+":"+s; document.getElementById("5tiempo").innerText=t;
+                        }
+                        else{
+                            m=0;
+                        
+                            if(h<23){
+                                h=h+1;
+                                t=h+":"+m+":"+s; document.getElementById("5tiempo").innerText=t;
+                            }
+                            else{
+                                h=0;
+                                t=h+":"+m+":"+s; document.getElementById("5tiempo").innerText=t;
+                            }
+                        }
+                    }
+
+                }
+            }
+        </script>
+        <hr>
+
+        <h1>6) Positivo o negativo</h1>
+        <label >Numero <input type="number" id="6pon"></label>
+        <button onclick="posneg()">Aceptar</button>
+        <h3 id="6res"></h3>
+        
+        <script>
+            function posneg(){
+                let num1=parseFloat(document.getElementById("6pon").value);
+                if(num1>0)
+                {
+                    document.getElementById("6res").innerText="El numero positivo";
+                }
+                else if(num1<0){
+                    document.getElementById("6res").innerText="El numero es negativo";
+                }
+                else{
+                    document.getElementById("6res").innerText="El numero es neutro (0)";
+                }
+            }
+        </script>
+        <hr>
+
+        <h1>7) Par o impar</h1>
+        <label >Numero <input type="number" id="7paroimpar"></label>
+        <button onclick="parimparne()">Aceptar</button>
+        <h3 id="7poi"></h3>
+        
+        <script>
+           function parimparne(){
+                let num=parseFloat(document.getElementById("7paroimpar").value);
+                if(((num>0)||(num<0))&&(num%2==0))
+                {
+                    document.getElementById("7poi").innerText="El numero es par";
+                }
+                else if(((num>0)||(num<0))&&(num%2==!0)){
+                    document.getElementById("7poi").innerText="El numero es impar";
+                }
+                else{
+                    document.getElementById("7poi").innerText="El numero es 0";
+                }
+            }
+        </script>
+        <hr>
+
+        <h1>8) Numero mayor y menor</h1>
+        <label >N1:  <input type="number" id="8n1"></label>
+        <label >N2:  <input type="number" id="8n2"></label>
+        <label >N3:  <input type="number" id="8n3"></label>
+        <label >N4:  <input type="number" id="8n4"></label>
+        <label >N5:  <input type="number" id="8n5"></label>
+        <label >N6:  <input type="number" id="8n6"></label>
+        <label >N7:  <input type="number" id="8n7"></label>
+        <label >N8:  <input type="number" id="8n8"></label>
+        <label >N9:  <input type="number" id="8n9"></label>
+        <label >N10:  <input type="number" id="8n10"></label>
+        <button onclick="mym()">Aceptar</button>
+        <label >Numero mayor <input type="number" id="8mayor" readonly></label>
+        <label >Numero menor <input type="number" id="8menor" readonly></label>
+        <script>
+            function mym(){
+                let n1= parseFloat(document.getElementById("8n1").value);
+                let n2= parseFloat(document.getElementById("8n2").value);
+                let n3= parseFloat(document.getElementById("8n3").value);
+                let n4= parseFloat(document.getElementById("8n4").value);
+                let n5= parseFloat(document.getElementById("8n5").value);
+                let n6= parseFloat(document.getElementById("8n6").value);
+                let n7= parseFloat(document.getElementById("8n7").value);
+                let n8= parseFloat(document.getElementById("8n8").value);
+                let n9= parseFloat(document.getElementById("8n9").value);
+                let n10= parseFloat(document.getElementById("8n10").value);
+
+                
+                
+
+                if((n1>n2)&&(n1>n3)&&(n1>n4)&&(n1>n5)&&(n1>n6)&&(n1>n7)&&(n1>n8)&&(n1>n9)&&(n1>n10)){
+                    document.getElementById("8mayor").value=n1;
+                }
+                if((n1<n2)&&(n1<n3)&&(n1<n4)&&(n1<n5)&&(n1<n6)&&(n1<n7)&&(n1<n8)&&(n1<n9)&&(n1<n10)){
+                    document.getElementById("8menor").value=n1;
+                }
+               if((n2>n1)&&(n2>n3)&&(n2>n4)&&(n2>n5)&&(n2>n6)&&(n2>n7)&&(n2>n8)&&(n2>n9)&&(n2>n10)){
+                    document.getElementById("8mayor").value=n2;
+                }
+                if((n2<n1)&&(n2<n3)&&(n2<n4)&&(n2<n5)&&(n2<n6)&&(n2<n7)&&(n2<n8)&&(n2<n9)&&(n2<n10)){
+                    document.getElementById("8menor").value=n2;
+                }
+                if((n3>n2)&&(n3>n1)&&(n3>n4)&&(n3>n5)&&(n3>n6)&&(n3>n7)&&(n3>n8)&&(n3>n9)&&(n3>n10)){
+                    document.getElementById("8mayor").value=n3;
+                }
+                if((n3<n2)&&(n3<n1)&&(n3<n4)&&(n3<n5)&&(n3<n6)&&(n3<n7)&&(n3<n8)&&(n3<n9)&&(n3<n10)){
+                    document.getElementById("8menor").value=n3;
+                }
+                if((n4>n2)&&(n4>n3)&&(n4>n1)&&(n4>n5)&&(n4>n6)&&(n4>n7)&&(n4>n8)&&(n4>n9)&&(n4>n10)){
+                    document.getElementById("8mayor").value=n4;
+                }
+                if((n4<n2)&&(n4<n3)&&(n4<n1)&&(n4<n5)&&(n4<n6)&&(n4<n7)&&(n4<n8)&&(n4<n9)&&(n4<n10)){
+                    document.getElementById("8menor").value=n4;
+                }
+                if((n5>n2)&&(n5>n3)&&(n5>n4)&&(n5>n1)&&(n5>n6)&&(n5>n7)&&(n5>n8)&&(n5>n9)&&(n5>n10)){
+                    document.getElementById("8mayor").value=n5;
+                }
+                if((n5<n2)&&(n5<n3)&&(n5<n4)&&(n5<n1)&&(n5<n6)&&(n5<n7)&&(n5<n8)&&(n5<n9)&&(n5<n10)){
+                    document.getElementById("8menor").value=n5;
+                }
+                if((n6>n2)&&(n6>n3)&&(n6>n4)&&(n6>n5)&&(n6>n1)&&(n6>n7)&&(n6>n8)&&(n6>n9)&&(n6>n10)){
+                    document.getElementById("8mayor").value=n6;
+                }
+                if((n6<n2)&&(n6<n3)&&(n6<n4)&&(n6<n5)&&(n6<n1)&&(n6<n7)&&(n6<n8)&&(n6<n9)&&(n6<n10)){
+                    document.getElementById("8menor").value=n6;
+                }
+                if((n7>n2)&&(n7>n3)&&(n7>n4)&&(n7>n5)&&(n7>n6)&&(n7>n1)&&(n7>n8)&&(n7>n9)&&(n7>n10)){
+                    document.getElementById("8mayor").value=n7;
+                }
+                if((n7<n2)&&(n7<n3)&&(n7<n4)&&(n7<n5)&&(n7<n6)&&(n7<n1)&&(n7<n8)&&(n7<n9)&&(n7<n10)){
+                    document.getElementById("8menor").value=n7;
+                }
+                if((n8>n2)&&(n8>n3)&&(n8>n4)&&(n8>n5)&&(n8>n6)&&(n8>n7)&&(n8>n1)&&(n8>n9)&&(n8>n10)){
+                    document.getElementById("8mayor").value=n8;
+                }
+                if((n8<n2)&&(n8<n3)&&(n8<n4)&&(n8<n5)&&(n8<n6)&&(n8<n7)&&(n8<n1)&&(n8<n9)&&(n8<n10)){
+                    document.getElementById("8menor").value=n8;
+                }
+                if((n9>n2)&&(n9>n3)&&(n9>n4)&&(n9>n5)&&(n9>n6)&&(n9>n7)&&(n9>n8)&&(n9>n1)&&(n9>n10)){
+                    document.getElementById("8mayor").value=n9;
+                }
+                if((n9<n2)&&(n9<n3)&&(n9<n4)&&(n9<n5)&&(n9<n6)&&(n9<n7)&&(n9<n8)&&(n9<n1)&&(n9<n10)){
+                    document.getElementById("8menor").value=n9;
+                }
+                if((n10>n2)&&(n10>n3)&&(n10>n4)&&(n10>n5)&&(n10>n6)&&(n10>n7)&&(n10>n8)&&(n10>n9)&&(n10>n1)){
+                    document.getElementById("8mayor").value=n10;
+                }
+                if((n10<n2)&&(n10<n3)&&(n10<n4)&&(n10<n5)&&(n10<n6)&&(n10<n7)&&(n10<n8)&&(n10<n9)&&(n10<n1)){
+                    document.getElementById("8menor").value=n10;
+                }
+            }
+        </script>
+        <hr>
+
+        <h1>9) Descuento (10% o 15%)</h1>
+        <label >Monto:  <input type="number" id="9monto"></label>
+        <button onclick="descuento()">Aceptar</button>
+        <label >Precio con descuento <input type="number" id="9descuento" readonly></label>
+        <script>
+            function descuento(){
+                let m=parseFloat(document.getElementById("9monto").value);
+                let d=0, t=0;
+                 if(m<10000){
+                    d=m*0.10;
+                    t=m-d;
+                    document.getElementById("9descuento").value=t;
+                 }
+                 else{
+                    d=m*0.15;
+                    t=m-d;
+                    document.getElementById("9descuento").value=t;
+                 }
+            }
+        </script>
+        <hr>
+
+        <h1>10) Vocal</h1>
+        <label >Letra:  <input type="text" id="10letra"></label>
+        <button onclick="vocal()">Aceptar</button>
+        <h3 id="10vocal"></h3>
+        <script>
+            function vocal(){
+                let m=document.getElementById("10letra").value;
+                 if((m=="a")||(m=="A")||(m=="e")||(m=="E")||(m=="i")||(m=="I")||(m=="o")||(m=="O")||(m=="u")||(m=="U")){
+                    document.getElementById("10vocal").innerText="Es una vocal";
+                 }
+                 else{
+                    document.getElementById("10vocal").innerText="No es una vocal";
+                 }
+            }
+        </script>
+        
+    </body>
+</html>

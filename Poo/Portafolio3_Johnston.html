@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1>1) Numeros pares e impares</h1> 
+  <button onclick="Parimp()">Aceptar</button>
+  <h3 id="1par"></h3>
+  <h3 id="1impar"></h3>
+
+  <script>
+    function Parimp(){
+      let contpar=0,contimpar=0,n1=0;
+      while(n1>=0){
+        n1=parseFloat(prompt("introduce un numero"));
+        if((n1%2==0)&&(n1>0))
+        {
+          contpar=contpar+1;
+        }
+        if((n1%2==!0)&&(n1>0))
+        {
+          contimpar=contimpar+1;
+        }
+      }
+      document.getElementById("1par").innerText="Numeros pares "+contpar;
+      document.getElementById("1impar").innerText="Numeros impares "+contimpar;
+    }
+  </script>
+   <hr>
+
+  <h1>2) mayor y menor</h1>
+  <button onclick="MayMen()">Aceptar</button>
+  <label>Mayor <input type="number" id="2may"></label>
+  <label>Menor <input type="number" id="2men"></label><br>
+  
+  <script>
+    function MayMen(){
+      let n,may,men=NaN;
+      do{
+        n=parseFloat(prompt("Numero"));
+        if(isNaN(men)){
+          may=n;
+          men=n;
+        }
+        else{
+          if(may<n){
+            may=n;
+          }
+          else{
+            if(men>n){
+              men=n;
+            }
+          }
+        }
+      }while(confirm("¿Deseas continuar?"));
+      document.getElementById("2may").value=may;
+      document.getElementById("2men").value=men;
+    }
+  </script>
+  <hr>
+
+  <h1>3) Trabajadores promedio</h1>
+  <h3>Salario</h3>
+  <label>Trabajador 1 <input type="number" id="3t1"></label><br>
+  <label>Trabajador 2 <input type="number" id="3t2"></label><br>
+  <label>Trabajador 3 <input type="number" id="3t3"></label><br>
+  <label>Trabajador 4 <input type="number" id="3t4"></label><br>
+  <label>Trabajador 5 <input type="number" id="3t5"></label><br>
+  <label>Trabajador 6 <input type="number" id="3t6"></label><br>
+  <label>Trabajador 7 <input type="number" id="3t7"></label><br>
+  <label>Trabajador 8 <input type="number" id="3t8"></label><br>
+  <label>Trabajador 9 <input type="number" id="3t9"></label><br>
+  <label>Trabajador 10 <input type="number" id="3t10"></label><br>
+  <button onclick="promedio()">Aceptar</button>
+  <h3 id="3monto"></h3>
+  <h3 id="3promedio"></h3>
+  <script>
+    function promedio(){
+      let p=0,s=0,n3=1;
+      for(i=1;i<=10;i++){
+        n3=parseFloat(document.getElementById("3t"+i).value);
+        s=s+n3;
+      }
+      p=s/10;
+      document.getElementById("3monto").innerText="La suma de los sueldos es: "+s;
+      document.getElementById("3promedio").innerText="El promedio de los sueldos es: "+p;
+    }
+  </script>
+  <hr>
+
+  <h1>4) Tablas de multiplir 1-10</h1>
+  <button onclick="tablas()">Aceptar</button>
+  <div id="4tabla"></div>
+
+  <script>
+    function tablas(){
+      for(i=1;i<=10;i++){
+        for(x=1;x<=10;x++){
+          m=i*x;
+          document.getElementById("4tabla").innerHTML+=i+"x"+x+"="+m+"<br>";
+        }
+        document.getElementById("4tabla").innerHTML+="<hr>";
+      }
+    }
+  </script>
+  <hr>
+
+  <h1>5) Hombres y mujeres mayores de edad</h1>
+  <button onclick="maymenedad()">Aceptar</button>
+  <h3 id="5mayorhym"></h3>
+  <h3 id="5menorhym"></h3>
+  
+  
+  <script>
+    function maymenedad(){
+      let hombresmayedad=0,hombresmenedad=0,mujeresmayores=0,mujeresmenores=0;
+      do{
+        let sexo=prompt("Ingresar el sexo (hombre o mujer): ");
+        let edad=parseInt(prompt("Ingresar la edad: "));
+        
+        if((edad>=18)&&(sexo.toLowerCase()=="mujer")){
+          mujeresmayores=mujeresmayores+1;
+        }
+        if((edad>=18)&&(sexo.toLowerCase()=="hombre")){
+          hombresmayedad=hombresmayedad+1;
+        }
+        if((edad<18)&&(sexo.toLowerCase()=="mujer")){
+          mujeresmenores=mujeresmenores+1;
+        }
+        if((edad<18)&&(sexo.toLowerCase()=="hombre")){
+          hombresmenedad=hombresmenedad+1;
+        }
+       
+      }while(confirm("¿Deseas continuar?"));
+      document.getElementById("5mayorhym").innerText="La cantidad de hombres mayores de edad es "+hombresmayedad+" y la cantidad de mujeres es "+mujeresmayores;
+      document.getElementById("5menorhym").innerText="La cantidad de hombres menores de edad es "+hombresmenedad+" y la cantidad de mujeres es "+mujeresmenores;
+    }
+  </script>
+  <hr>
+
+
+  <h1>6) 100 numero pares</h1>
+  <button onclick="pares()">Aceptar</button>
+  <h3 id="6serie"></h3>
+
+  <script>
+    function pares(){
+      for(i=2;i<=200;i=i+2){
+        document.getElementById("6serie").innerHTML+=i+"<br>";
+      }
+    }
+  </script>
+  <hr>
+    
+  <h1>7) Divisible entre 2,3,5,7</h1>
+  <label>Numero <input type="number" id="7num"></label><br>
+  <button onclick="divisible()">Aceptar</button>
+  <span id="7res"></span>
+
+  <script>
+    function divisible(){
+      let n=parseInt(document.getElementById("7num").value);
+      let s="";
+      if (n%2==0){
+        s+="2, ";
+      }
+      if (n%3==0){
+        s+="3, ";
+      }
+      if (n%5==0){
+        s+="5, ";
+      }
+      if (n%7==0){
+        s+="7, ";
+      }
+      if (s==""){
+        document.getElementById("7res").innerText=n+ " no es divisible entre 2, 3, 5 y 7";
+      }
+      else{
+        document.getElementById("7res").innerText=n+" es divisible entre "+s.substr(0, s.length-1);
+      }
+    }
+  </script>
+    <hr>
+
+  <h1>8) Suma de serie</h1>
+  <label>Ingrese hasta que numero desea sumar: <input type="number" id="8num"></label><br>
+  <button onclick="sumaserie()">Aceptar</button>
+  <h3 id="8suma"></h3>
+
+  <script>
+    function sumaserie(){
+      let sum=0;
+      let num=parseInt(document.getElementById("8num").value);
+      for(i=1;i<=num;i++){
+        sum=sum+i;
+      }
+      document.getElementById("8suma").innerHTML=sum;
+    }
+  </script>
+  
+</body>
+</html

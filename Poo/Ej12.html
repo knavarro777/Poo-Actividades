@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .verde{
+      background-color: green;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="txt"><br>
+  <input type="color" name="" id=""><br>
+  <input type="number"><br>
+  <input type="search"><br>
+  <input type="range"><br>
+  <input type="checkbox"><br>
+  <input type="radio"><br>
+  <input onclick="getClass()" type="button" value="Botón input" class="verde"><br>
+  <button onclick="getElements()" class="verde">Seleccionar</button>
+  <button onclick="poner()">Poner</button><button onclick="quitar()">Quitar</button>
+  <button onclick="agregar()">Crear</button>
+  <input type="text" id="nElemento"> <button onclick="remover()">Eliminar</button>
+  <button onclick="insertarAntes()">Insertar antes</button>
+  <button onclick="reemplazar()">Reemplazar</button>
+  <button onclick="antes()">Insertar antes</button>
+  <button onclick="despues()">Insertar despues</button>
+  <button onclick="insertarInicio()">Insertar inicio</button>
+  <button onclick="insertarFinal()">Insertar final</button>
+  <div id="elements"></div>
+  <p class="verde">texto generico</p>
+  <script>
+function getElements(){
+  let objs=document.getElementsByTagName("input");
+  document.getElementById("elements").innerHTML="";
+  for(let i=0;i<objs.length;i++)
+  document.getElementById("elements").innerHTML+=objs[i].type+"<br>";
+}
+function getClass(){
+  let objs=document.getElementsByClassName("verde");
+  for(let i=0;i<objs.length;i++)
+    objs[i].style.backgroundColor="blue";
+}
+function poner(){
+  document.getElementById("txt").setAttribute("readonly",true);
+  document.getElementById("txt").setAttribute("class","verde");
+}
+function quitar(){
+  document.getElementById("txt").removeAttribute("readonly");
+}
+let dn=1;
+function mensaje(e){
+  alert("Estoy vivo, soy en div "+e.target.innerText);
+}
+function colorAzul(e){
+  e.target.style.backgroundColor="blue";
+}
+function colorRojo(e){
+  e.target.style.backgroundColor="red";
+}
+function crear(){
+  let div=document.createElement("div");
+  div.style.width="100px";
+  div.style.height="100px";
+  div.style.backgroundColor="red";
+  div.style.border="1px solid black";
+  div.style.borderRadius="50%";
+  div.innerText=dn;
+  dn++;
+  div.style.fontSize="50px";
+  div.style.color="white";
+  div.addEventListener("click",mensaje);
+  div.addEventListener("mouseenter",colorAzul);
+  div.addEventListener("mouseleave",colorRojo);
+  return div;
+}
+function agregar(){
+  let divNuevo=crear();
+  document.getElementById("elements").appendChild(divNuevo);
+}
+function remover(){
+  let d=document.getElementById("elements").getElementsByTagName("div");
+  document.getElementById("elements").removeChild(d[parseInt(document.getElementById("nElemento").value)]);
+}
+function insertarAntes(){
+  let divNuevo=crear();
+  let d=document.getElementById("elements").getElementsByTagName("div");
+  let divHermano=d[parseInt(document.getElementById("nElemento").value)];
+  document.getElementById("elements").insertBefore(divNuevo,divHermano);
+}
+function reemplazar(){
+  let divNuevo=crear();
+  divNuevo.style.backgroundColor="blue";
+  let d=document.getElementById("elements").getElementsByTagName("div");
+  let divViejo=d[parseInt(document.getElementById("nElemento").value)];
+  document.getElementById("elements").replaceChild(divNuevo,divViejo);
+}
+function antes(){
+  let divNuevo=crear();
+  let d=document.getElementById("elements").getElementsByTagName("div");
+  let divHermano=d[parseInt(document.getElementById("nElemento").value)];
+  divHermano.before(divNuevo);
+}
+function despues(){
+  let divNuevo=crear();
+  let d=document.getElementById("elements").getElementsByTagName("div");
+  let divHermano=d[parseInt(document.getElementById("nElemento").value)];
+  divHermano.after(divNuevo);
+}
+function insertarInicio(){
+  let divNuevo=crear();
+  let divPadre=document.getElementById("elements");
+  divPadre.prepend(divNuevo);
+}
+function insertarFinal(){
+  let divNuevo=crear();
+  let divPadre=document.getElementById("elements");
+  divPadre.append(divNuevo);
+}
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Examen</title>
+    </head>
+    <body>
+        <div>
+            <label >Titular: <input type="text" id="t"></label>
+            <label >Numero de Cuenta: <input type="number" id="Cuenta"></label>
+            <label >Saldo: <input type="number" id="Saldo"></label>
+        </div id="mostrardatos">
+        <div>
+
+        </div>
+        <button onclick="datos()">Aceptar</button>
+        <button onclick="mostrar()">Mostrar</button>
+
+        <script>
+            function datos(){
+                class CuentaBancaria{
+                #_Titular; 
+                #_numeroCuenta; 
+                #_saldo;
+                #_vrd=new Array();
+                constructor(t,nc,s,valor){
+                    if((!isNaN(parseFloat(s)))&&(!isNaN(parseFloat(nc)))){
+                        /*
+                        this.#_Titular=t.toString();
+                        this.#_numeroCuenta=parseInt(nc);
+                        this.#_saldo=parseFloat(s);*/
+                        this.#_Titular=document.getElementById("t").value;
+                        this.#_numeroCuenta=document.getElementById("Cuenta").value;
+                        this.#_saldo=document.getElementById("Saldo").value;
+                    }
+
+                    if(!isNaN(parseFloat(valor))){
+                        this.#_vrd[0]=parseFloat(valor);
+                    }
+                    else{
+                        this.#_vrd[0]=0;
+                    }
+                } 
+                get t(){
+                    return this.#_Titular;
+                }
+                set t(value){
+                    this.#_Titular=value.toString();
+                }
+                get nc(){
+                    return this.#_numeroCuenta;
+                }
+                set nc(value){
+                    this.#_numeroCuenta=parseInt(value);
+                }
+                get s(){
+                    return this.#_saldo;
+                }
+                get v(){
+                    return this.#_vrd[1];
+                }
+                set v(value){
+                    if(!isNaN(parseFloat(value))){
+                        this.#_vrd[0]=parseFloat(value);
+                    }
+                    else{
+                        this.#_vrd[0]=0;
+                    }
+                }
+                
+                deposito=function(){
+                    return(this.#_saldo+=valor);
+                }
+                retiro=function(){
+                    return(this.#_saldo-=valor);
+                }
+            }
+            let c= new CuentaBancaria("Karol",2222,1958);
+            console.log(c);
+            console.log(c.t);
+            console.log(c.nc);
+            console.log(c.s);
+            }
+        </script>
+    </body>
+</html>

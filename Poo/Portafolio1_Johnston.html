@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <script src="portafolio.js"></script>
+    </head>
+    <body>
+        <h1>1) Millas nauticas a metros</h1>
+        <label >Millas náuticas <input type="number" id="1millas"></label>
+        <button onclick="millasametros()">Aceptar</button>
+        <label >Metros <input type="number" id="1metros" readonly></label>
+
+        <script>
+            function millasametros(){
+                let m=document.getElementById("1millas").value;
+                let mt=m*1852;
+                document.getElementById("1metros").value=mt;
+            }
+        </script>
+        <hr>
+
+        <h1>2) Porcentaje de descuento</h1>
+        <label >Precio <input type="number" id="2precio"></label>
+        <label >% de descuento <input type="number" id="2descuento"></label>
+        <button onclick="porcentajededescuento()">Aceptar</button>
+        <label >Descuento en pesos <input type="number" id="2descuentoPesos" readonly></label>
+
+        <script>
+            function porcentajededescuento(){
+                let p=document.getElementById("2precio").value;
+                let d=document.getElementById("2descuento").value;
+                let pd=p*d/100;
+                document.getElementById("2descuentoPesos").value=pd;
+            }
+        </script>
+        <hr>
+
+        <h1>3)Calcular porcentaje de descuento</h1>
+        <label >Precio del articulo<input type="number" id="3precio"></label>
+        <label >Precio con descuento<input type="number" id="3descuentoPesos"></label>
+        <button onclick="calculoporcentaje()">Aceptar</button>
+        <label >% de descuento<input type="number" id="3descuento" readonly></label>
+
+        <script>
+            function calculoporcentaje(){
+                let p=parseFloat(document.getElementById("3precio").value);
+                let pd=parseFloat(document.getElementById("3descuentoPesos").value);
+                let d;
+                d=100-pd*100/p;
+                document.getElementById("3descuento").value=d;
+            }
+        </script>
+        <hr>
+
+        <h1>4)Operaciones</h1>
+        <label >Primer numero <input type="number" id="4num1"></label>
+        <label >Segundo numero <input type="number" id="4num2"></label>
+        <button onclick="operaciones()">Aceptar</button>
+        <label >Suma: <input type="number" id="4suma" readonly></label>
+        <label >Resta: <input type="number" id="4resta" readonly></label>
+        <label >Multiplicacion: <input type="number" id="4multiplicacion" readonly></label>
+        <label >Division: <input type="number" id="4division" readonly></label>
+
+        <script>
+            function operaciones(){
+                let n1=parseFloat(document.getElementById("4num1").value);
+                let n2=parseFloat(document.getElementById("4num2").value);
+                let suma=0, resta=0, multiplicacion=0, division=0;
+
+                suma=n1+n2;
+                resta=n1-n2;
+                multiplicacion=n1*n2;
+                division=n1/n2;
+
+                document.getElementById("4suma").value=suma;
+                document.getElementById("4resta").value=resta;
+                document.getElementById("4multiplicacion").value=multiplicacion;
+                document.getElementById("4division").value=division;
+            }
+        </script>
+        <hr>
+
+        <h1>5) Volumen de una esfera</h1>
+        <label >Radio de la esfera: <input type="number" id="5radio"></label>
+        <button onclick="volumenesfera()">Aceptar</button>
+        <label >Volumen: <input type="number" id="5volumen" readonly></label>
+
+        <script>
+            function volumenesfera(){
+                let r=parseFloat(document.getElementById("5radio").value);
+                let volumen=0;
+
+                volumen=(4/3)*3.1416*(r*r*r);
+
+                document.getElementById("5volumen").value=volumen;
+            }
+        </script>
+        <hr>
+
+        <h1>6) Pulgadas a cm</h1>
+        <label >Pulgadas: <input type="number" id="6pulgadas"></label>
+        <button onclick="conversionpacm()">Aceptar</button>
+        <label >Centimetros: <input type="number" id="6cm" readonly></label>
+
+        <script>
+            function conversionpacm(){
+                let p=parseFloat(document.getElementById("6pulgadas").value);
+                let cm=0;
+                cm=p*2.54;
+                document.getElementById("6cm").value=cm;
+            }
+        </script>
+        <hr>
+
+        <h1>7) Horas, minutos y segundos</h1>
+        <label >Segundos <input type="number" id="7segundos"></label>
+        <button onclick="HMS()">Aceptar</button>
+        <label >Horas <input type="number" id="7horas" readonly></label>
+        <label >Minutos <input type="number" id="7minutos" readonly></label>
+        <label >Segundos <input type="number" id="7segundosR" readonly></label>
+
+        <script>
+            function HMS(){
+                let s=document.getElementById("7segundos").value;
+                let h=parseInt(s/3600);
+                s%=3600;
+                let m=parseInt(s/60);
+                s%=60;
+                document.getElementById("7horas").value=h;
+                document.getElementById("7minutos").value=m;
+                document.getElementById("7segundosR").value=s;
+            }
+        </script>
+        <hr>
+
+        <h1>8) volumen de un cilindro</h1>
+        <label >Radio del cilindro: <input type="number" id="8radio"></label>
+        <label >Altura: <input type="number" id="8altura"></label>
+        <button onclick="volumencilindro()">Aceptar</button>
+        <label >Volumen: <input type="number" id="8volumen" readonly></label>
+
+        <script>
+            function volumencilindro(){
+                let r=parseFloat(document.getElementById("8radio").value);
+                let a=parseFloat(document.getElementById("8altura").value);
+                let volumen=0;
+
+                volumen=3.1416*(r*r)*a;
+
+                document.getElementById("8volumen").value=volumen;
+            }
+        </script>
+        <hr>
+
+        <h1>9) Volumen de un cono</h1>
+        <label >Radio: <input type="number" id="9radio"></label>
+        <label >Altura: <input type="number" id="9altura"></label>
+        <button onclick="volumencono()">Aceptar</button>
+        <label >Volumen: <input type="number" id="9volumen" readonly></label>
+
+        <script>
+            function volumencono(){
+                let r=parseFloat(document.getElementById("9radio").value);
+                let a=parseFloat(document.getElementById("9altura").value);
+                let volumen=0;
+
+                volumen=3.1416*(r*r)*a/3;
+
+                document.getElementById("9volumen").value=volumen;
+            }
+        </script>
+        <hr>
+
+        <h1>10) Volumen de un cubo</h1>
+        <label >Lado: <input type="number" id="10lado"></label>
+        <button onclick="volumencubo()">Aceptar</button>
+        <label >Volumen: <input type="number" id="10volumen" readonly></label>
+        
+        <script>
+            function volumencubo(){
+                let l=parseFloat(document.getElementById("10lado").value);
+                let volumen=0;
+
+                volumen=l*l*l;
+
+                document.getElementById("10volumen").value=volumen;
+            }
+        </script>
+    </body>
+</html>

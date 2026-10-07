@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examen parcial 1</title>
+</head>
+<body>
+    <h1>1) Llenar arrays y mostrar el numero mayor y el menor</h1>
+    <label >Cantidad de elementos del array: <input type="number" id="numelementos"></label>
+    <button onclick="array()">Llenar array</button>
+    
+    <label >Numero mayor del array: <input type="number" id="1mayor" readonly></label>
+    <label >Numero menor del array: <input type="number" id="1menor" readonly></label>
+    <div id="1arreglo"></div>
+    
+  <script>
+    function array(){
+        let i=parseInt(document.getElementById("numelementos").value);
+        let arreglop=Array(i);
+        let mayor=0, menor=NaN;
+        
+        for(let x=0;x<arreglop.length;x++)
+       {
+	        arreglop[x]=prompt("Introducir los elementos del arreglo: ");
+            document.getElementById("1arreglo").innerHTML+=arreglop[x]+"<br>";
+        }
+        for(let x=0;x<arreglop.length;x++)
+       {
+            n=arreglop[x];
+             if(isNaN(menor)){
+                mayor=n;
+                menor=n;
+            }
+            else{
+                if(mayor<n){
+                    mayor=n;
+                }
+                else{
+                    if(menor>n){
+                        menor=n;
+                    }
+                }
+            }
+        }
+        document.getElementById("1mayor").value=mayor;
+        document.getElementById("1menor").value=menor;
+    }
+    
+  </script>
+  <hr>
+  <h1>2) Calcular el volumen de un cono</h1>
+  <label >Radio: <input type="number" id="2radio"></label>
+  <label >Altura: <input type="number" id="2altura"></label>
+  <button onclick="volcono()">Aceptar</button>
+  <label >Volumen del cono: <input type="number" id="2volumen" readonly></label>
+
+  <script>
+      function volcono(){
+          let rad=parseFloat(document.getElementById("2radio").value);
+          let alt=parseFloat(document.getElementById("2altura").value);
+          let volumen=0;
+
+          volumen=3.1416*(rad*rad)*alt/3;
+
+          document.getElementById("2volumen").value=volumen;
+      }
+  </script>
+  <hr>
+
+  <h1>3) Tienda de memorias</h1>
+  <label >Cantidad de memorias de 16GB: <input type="number" id="3m"></label>
+  <label >Cantidad de memorias de 32GB: <input type="number" id="3me"></label>
+  <label >Cantidad de memorias de 64GB: <input type="number" id="3mem"></label>
+  <button onclick="memoriasdesc()">Aceptar</button><br>
+  <label >Suma total (sin descuento): <input type="number" id="3suma" readonly></label>
+  <label >Descuento: <input type="number" id="3descuento" readonly></label>
+  <label >Cantidad a pagar: <input type="number" id="3final" readonly></label>
+
+  <script>
+    function memoriasdesc(){
+        let m1=parseFloat(document.getElementById("3m").value);
+        let m2=parseFloat(document.getElementById("3me").value);
+        let m3=parseFloat(document.getElementById("3mem").value);
+        let suma1, suma2, suma3, sumatotal, desuento, final;
+        
+        suma1=m1*90;
+        suma2=m2*170;
+        suma3=m3*250;
+        sumatotal=suma1+suma2+suma3;
+        document.getElementById("3suma").value=sumatotal;
+
+        if((sumatotal>=200)&&(sumatotal<=400)){
+            descuento=sumatotal*0.05;
+            document.getElementById("3descuento").value=descuento;
+            final=sumatotal-descuento;
+            document.getElementById("3final").value=final;
+        }
+        if((sumatotal>=401)&&(sumatotal<=600)){
+            descuento=sumatotal*0.08;
+            document.getElementById("3descuento").value=descuento;
+            final=sumatotal-descuento;
+            document.getElementById("3final").value=final;
+        }
+        if(sumatotal>600){
+            descuento=sumatotal*0.10;
+            document.getElementById("3descuento").value=descuento;
+            final=sumatotal-descuento;
+            document.getElementById("3final").value=final;
+        }
+
+    }
+  </script>
+  <h1>4) Sueldo mensual</h1>
+  <label >Sueldo base mensual: <input type="number" id="4sueldobase"></label>
+  <label >Horas extras: <input type="number" id="4hextras"></label>
+  <label >Monto pagado por hora: <input type="number" id="4salario"></label>
+  <button onclick="montofinals()">Aceptar</button><br>
+  <label >Monto: <input type="number" id="4monto" readonly></label>
+  <label >Sin impuestos: <input type="number" id="4montosinimp" readonly></label>
+
+  <script>
+    function montofinals(){
+        let bm=parseFloat(document.getElementById("4sueldobase").value);
+        let he=parseFloat(document.getElementById("4hextras").value);
+        let hm=parseFloat(document.getElementById("4salario").value);
+        let suma, impuestos;
+
+        suma=bm+(he*hm);
+        impuestos= suma-(suma*0.28);
+
+        document.getElementById("4monto").value=suma;
+        document.getElementById("4montosinimp").value=impuestos;
+    }
+  </script>
+
+
+  
+</body>
+</html>
